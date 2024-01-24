@@ -34,7 +34,9 @@ public class MegatopElements {
     String addToCartButton = "//*[contains(concat(' ', normalize-space(@class), ' '), 'btn-gray')]";
     String chooseBeltSize = "//td[contains(@class,'text') and contains(text(), '120')]";
     String beltInCartPreview = "//*[contains(@class, 'product__text mr-1 my-auto') and contains(text(), 'Размер: 120')]";
-    String sellPanel = "//*[contains(@class, 'v-navigation-drawer__content')]";
+    String previewPanel = "//*[contains(@class, 'v-navigation-drawer__content')]";
+    String navigateToCartButton = "//button[contains(concat(' ', normalize-space(@class), ' '), 'btn-gray mt-5')]";
+
 
 
     WebDriver driver;
@@ -172,12 +174,24 @@ public class MegatopElements {
         return wait.until(ExpectedConditions.attributeContains(driver.findElement(By.xpath(menSection)), "class", "link-active"));
     }
 
-    public boolean isBeltAddedPreview() {
-        WebElement panelElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sellPanel)));
+    public boolean isPreviewPanelVisible() {
+        WebElement panelElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(previewPanel)));
        return panelElement.isDisplayed();
 
+    }
+
+    public boolean isBeltAdded() {
+        WebElement beltInPreview = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(beltInCartPreview)));
+        return beltInPreview.isDisplayed();
+    }
+
+    public void clickNavigateToCart() {
+        driver.findElement(By.xpath(navigateToCartButton)).click();
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
 
     }
+
+
 }
 
 

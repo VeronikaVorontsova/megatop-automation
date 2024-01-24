@@ -5,6 +5,8 @@ import by.itacademy.vorontsova.MyDriver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+
 
 public class MegatopMenSectionTest extends BaseTest{
 
@@ -40,7 +42,13 @@ public class MegatopMenSectionTest extends BaseTest{
         megatopElements.clickBeltSize();
         Assertions.assertTrue(megatopElements.isAddToCartButtonClickable());
         megatopElements.clickAddToCartButton();
-        Assertions.assertTrue(megatopElements.isBeltAddedPreview());
+        Assertions.assertTrue(megatopElements.isPreviewPanelVisible());
+        Assertions.assertTrue(megatopElements.isBeltAdded());
+        megatopElements.clickNavigateToCart();
+        String actual = MyDriver.getDriver().findElement(By.xpath("//*[contains(@class, 'card mt-2')]")).getText();
+        Assertions.assertTrue(actual.contains("Ремни"));
+
+
 
 
 
