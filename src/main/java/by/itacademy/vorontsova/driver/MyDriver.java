@@ -1,7 +1,8 @@
-package by.itacademy.vorontsova;
+package by.itacademy.vorontsova.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import java.time.Duration;
 
@@ -16,7 +17,6 @@ public class MyDriver {
         }
         return driver;
     }
-
 
 
     public static void quitDriver() {

@@ -3,12 +3,10 @@ package by.itacademy.vorontsova.api;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class MegatopLogin {
+public class MegatopLoginTest {
     @Test
     public void testLoginIncorrect() {
         String body = "{\n" +
@@ -18,9 +16,9 @@ public class MegatopLogin {
         given().
                 body(body).
                 header("content-type", "application/json").
-        when().
+                when().
                 post("https://admin.megatop.by/api/v1/user/login").
-        then().
+                then().
                 assertThat().
                 statusCode(422).
                 body("message", equalTo("Вы ввели неверный номер телефона и/или пароль"));
