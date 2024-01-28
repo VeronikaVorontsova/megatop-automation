@@ -1,6 +1,6 @@
 package by.itacademy.vorontsova.pages;
 
-import by.itacademy.vorontsova.driver.MyDriver;
+import by.itacademy.vorontsova.driver.SingletonDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,10 +47,10 @@ public class MegatopPage {
 
 
     WebDriver driver;
-    WebDriverWait wait = new WebDriverWait(MyDriver.getDriver(), Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(SingletonDriver.getDriver(), Duration.ofSeconds(5));
 
     public MegatopPage() {
-        this.driver = MyDriver.getDriver();
+        this.driver = SingletonDriver.getDriver();
     }
 
     public MegatopPage clickConfirmMinsk() {
@@ -85,6 +85,7 @@ public class MegatopPage {
     }
 
     public void clickAccessories() {
+
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(accessoriesLink)));
         driver.findElement(By.xpath(accessoriesLink)).click();
     }
